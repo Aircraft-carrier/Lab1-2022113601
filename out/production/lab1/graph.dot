@@ -1,0 +1,53 @@
+digraph G {
+    rankdir=LR;
+    node [shape=circle, style=filled, color="#007BFF",
+          fontname="Arial", fontsize=12, width=1.2, height=1.2];
+    edge [arrowsize=1.2, color="#6C757D", fontname="Arial",
+          fontsize=10, penwidth=1.2];
+    graph [nodesep=0.8, ranksep=1.2, dpi=300];
+    "but" [label="but", xlabel="PageRank: 0.029"];
+    "a" [label="a", xlabel="PageRank: 0.045"];
+    "shared" [label="shared", xlabel="PageRank: 0.049"];
+    "data" [label="data", xlabel="PageRank: 0.076"];
+    "carefully" [label="carefully", xlabel="PageRank: 0.029"];
+    "scientist" [label="scientist", xlabel="PageRank: 0.047"];
+    "more" [label="more", xlabel="PageRank: 0.035"];
+    "wrote" [label="wrote", xlabel="PageRank: 0.042"];
+    "again" [label="again", xlabel="PageRank: 0.037"];
+    "analyzed" [label="analyzed", xlabel="PageRank: 0.054"];
+    "team" [label="team", xlabel="PageRank: 0.047"];
+    "it" [label="it", xlabel="PageRank: 0.033"];
+    "the" [label="the", xlabel="PageRank: 0.175"];
+    "with" [label="with", xlabel="PageRank: 0.047"];
+    "requested" [label="requested", xlabel="PageRank: 0.029"];
+    "detailed" [label="detailed", xlabel="PageRank: 0.048"];
+    "and" [label="and", xlabel="PageRank: 0.047"];
+    "report" [label="report", xlabel="PageRank: 0.088"];
+    "so" [label="so", xlabel="PageRank: 0.042"];
+    "but" -> "the" [label="1", labelfloat=true];
+    "a" -> "detailed" [label="1", labelfloat=true];
+    "shared" -> "the" [label="1", labelfloat=true];
+    "data" -> "wrote" [label="1", labelfloat=true];
+    "data" -> "so" [label="1", labelfloat=true];
+    "carefully" -> "analyzed" [label="1", labelfloat=true];
+    "scientist" -> "carefully" [label="1", labelfloat=true];
+    "scientist" -> "analyzed" [label="1", labelfloat=true];
+    "more" -> "data" [label="1", labelfloat=true];
+    "wrote" -> "a" [label="1", labelfloat=true];
+    "analyzed" -> "the" [label="1", labelfloat=true];
+    "analyzed" -> "it" [label="1", labelfloat=true];
+    "team" -> "but" [label="1", labelfloat=true];
+    "team" -> "requested" [label="1", labelfloat=true];
+    "it" -> "again" [label="1", labelfloat=true];
+    "the" -> "data" [label="1", labelfloat=true];
+    "the" -> "scientist" [label="2", labelfloat=true];
+    "the" -> "report" [label="1", labelfloat=true];
+    "the" -> "team" [label="2", labelfloat=true];
+    "with" -> "the" [label="1", labelfloat=true];
+    "requested" -> "more" [label="1", labelfloat=true];
+    "detailed" -> "report" [label="1", labelfloat=true];
+    "and" -> "shared" [label="1", labelfloat=true];
+    "report" -> "with" [label="1", labelfloat=true];
+    "report" -> "and" [label="1", labelfloat=true];
+    "so" -> "the" [label="1", labelfloat=true];
+}
