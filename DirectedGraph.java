@@ -254,7 +254,7 @@ public class DirectedGraph {
 
         return pr.get(word);
     }
-
+    // 又一个修改
     public String randomWalk() {
         List<String> path = new ArrayList<>();
         Random rand = new Random();
