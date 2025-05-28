@@ -3,6 +3,7 @@ import java.lang.reflect.Field;
 import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+
 public class TestDirectedGraph {
   private DirectedGraph graph;
 
@@ -19,6 +20,7 @@ public class TestDirectedGraph {
     field.setAccessible(true);
     field.set(obj, value);
   }
+
 
   @Test
   @DisplayName("测试桥接词生成")
