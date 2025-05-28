@@ -13,6 +13,7 @@ public class TestDirectedGraph {
     List<String> words = Arrays.asList("hello", "world", "java", "hello");
     graph = new DirectedGraph(words);
 
+
   }
 
   private void setPrivateField(Object obj, String fieldName, Object value) throws Exception {
