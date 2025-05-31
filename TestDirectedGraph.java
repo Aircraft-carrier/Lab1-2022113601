@@ -67,6 +67,7 @@ public class TestDirectedGraph {
     String result = graph.generateNewText(input);
     System.out.println("生成结果: \"" + result + "\"");
 
+
     assertEquals(input, result);
     System.out.println("✓ 测试通过: 输出与输入一致");
   }

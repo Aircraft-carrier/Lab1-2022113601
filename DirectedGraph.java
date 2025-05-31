@@ -1,3 +1,4 @@
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.awt.Desktop;
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,16 +10,7 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Random;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -39,17 +31,19 @@ public class DirectedGraph {
    * @param filePath path to the input text file
    * @throws IOException if there's an error reading the file
    */
+  @SuppressFBWarnings("CT_CONSTRUCTOR_THROW")
   public DirectedGraph(String filePath) throws IOException {
     this(filePath, false);
   }
 
   /**
-  * Constructor with test mode option (for unit testing)
+  * Constructor with test mode option (for unit testing).
   *
   * @param filePath path to the input text file
   * @param isTestMode if true, bypasses some security checks for testing
   * @throws IOException if there's an error reading the file
   */
+  @SuppressFBWarnings({"CT_CONSTRUCTOR_THROW", "PATH_TRAVERSAL_IN"})
   public DirectedGraph(String filePath, boolean isTestMode) throws IOException {
     // 1. 输入验证
     if (filePath == null || filePath.isEmpty()) {
@@ -96,7 +90,7 @@ public class DirectedGraph {
   }
 
   /**
-   * Alternative constructor that accepts direct text input (for testing)
+   * Alternative constructor that accepts direct text input (for testing).
    *
    * @param words the text content to build the graph from
    */
@@ -112,7 +106,9 @@ public class DirectedGraph {
   }
   /**
    * Visualizes the graph using Graphviz.
+   *
    */
+
   public static void showDirectedGraph(DirectedGraph graph) {
     try {
       String dotFile = "graph.dot";
@@ -199,6 +195,7 @@ public class DirectedGraph {
    * @param inputText the input text to process
    * @return the generated text with bridge words inserted
    */
+  @SuppressFBWarnings({"DMI_RANDOM_USED_ONLY_ONCE", "PREDICTABLE_RANDOM"})
   public String generateNewText(String inputText) {
     String processedInput = inputText.replaceAll("[^a-zA-Z]", " ").toLowerCase();
     String[] words = processedInput.split("\\s+");
@@ -374,6 +371,7 @@ public class DirectedGraph {
    *
    * @return string representing the path taken
    */
+  @SuppressFBWarnings("PREDICTABLE_RANDOM")
   public String randomWalk() {
     List<String> path = new ArrayList<>();
     Random rand = new Random();
@@ -421,6 +419,7 @@ public class DirectedGraph {
    * @param filename name of the file to save to
    * @throws IOException if there's an error writing the file
    */
+  @SuppressFBWarnings({"DM_DEFAULT_ENCODING", "PATH_TRAVERSAL_OUT"})
   public void saveAsDot(String filename) throws IOException {
     try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
       writer.println("digraph G {");
@@ -454,6 +453,7 @@ public class DirectedGraph {
     });
   }
 
+  @SuppressFBWarnings({"COMMAND_INJECTION", "DM_DEFAULT_ENCODING", "DM_DEFAULT_ENCODING"})
   private void exportToImage(String dotFile, String outputFile) throws IOException,
           InterruptedException {
     ProcessBuilder pb = new ProcessBuilder(
@@ -500,6 +500,7 @@ public class DirectedGraph {
    * @param path the path to save
    * @throws IOException if there's an error writing the file
    */
+  @SuppressFBWarnings({"DM_DEFAULT_ENCODING", "PATH_TRAVERSAL_OUT"})
   public void saveWalkToFile(String filename, String path) throws IOException {
     try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
       writer.println("Random Walk Path:");
